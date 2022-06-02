@@ -75,13 +75,11 @@ describe('na pagina de sorteio', () => {
         })
         const botao = screen.getByRole('button')
         fireEvent.click(botao)
-        let amigoSecreto = screen.getByRole('alert')
-        expect(amigoSecreto).toBeInTheDocument()
 
         act(() => {
             jest.runAllTimers()
         });
-        amigoSecreto = screen.getByRole('alert')
-        expect(amigoSecreto).not.toBeInTheDocument()
+        const alerta = screen.queryByRole('alert')
+        expect(alerta).not.toBeInTheDocument()
     })
 })

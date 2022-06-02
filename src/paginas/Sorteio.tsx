@@ -11,7 +11,7 @@ const Sorteio = () => {
     const participantes = useListaDeParticipantes()
 
     const [participanteDaVez, setParticipanteDaVez] = useState('')
-    const [amigoScreto, setAmigoSecreto] = useState('')
+    const [amigoSecreto, setAmigoSecreto] = useState('')
 
     const resultado = useResultadoSorteio()
 
@@ -19,6 +19,9 @@ const Sorteio = () => {
         evento.preventDefault()
         if (resultado.has(participanteDaVez)) {
             setAmigoSecreto(resultado.get(participanteDaVez)!)
+            setTimeout(() => {
+                setAmigoSecreto('')
+            }, 5000)
         }
     }
 
@@ -41,7 +44,7 @@ const Sorteio = () => {
                     <p>Clique em em sortear para ver quem é seu amigo secreto!</p>
                     <button className="botao-sortear">Sortear</button>
                 </form>
-                {amigoScreto && <p className="resultado" role="alert">{amigoScreto}</p>}
+                {amigoSecreto && <p className="resultado" role="alert">{amigoSecreto}</p>}
                 <footer className="sorteio">
                     <img src="/imagens/aviao.png" className="aviao" alt="Um desenho de um avião de papel" />
                 </footer>
